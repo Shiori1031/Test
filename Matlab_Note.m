@@ -23,6 +23,12 @@ A=cell(1,6);%计数（角标）从1开始
 A{2} = eye(3);%3*3的对角线为1的单位矩阵
 A{5} = magic(5); %生成n阶幻方 使得每列每行对角线的和相等
 B = A{5};
+
+
+books = struct('name',{{'aaa','bbb'}},'price',[32 45]);
+books.name
+books.name(1)
+books.name{1};
 %%
 %矩阵构造
 %%
@@ -34,9 +40,3 @@ A= [
 B=1:2:9;
 C=repmat(B,3,2);%横着重复2次 竖着重复3次B
 D=ones(4,4);%4行4列的全1矩阵
-
-
-books = struct('name',{{'aaa','bbb'}},'price',[32 45]);
-books.name
-books.name(1)
-books.name{1};
