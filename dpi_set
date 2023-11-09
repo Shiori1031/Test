@@ -1,0 +1,26 @@
+%%
+% 读取原始图像
+input_image = imread('D:\Photos\Test\进步.jpg');
+
+% 获取输入图像的文件路径
+[input_dir, input_name, input_ext] = fileparts('D:\Photos\Test\进步.jpg');
+
+% 定义所需的分辨率
+target_dpi = [930, 300, 150, 72];
+
+% 计算原始图像的分辨率
+original_dpi = 96;
+
+% 计算缩放因子
+scale_factors = target_dpi / original_dpi;
+
+% 根据所需的分辨率调整图像大小
+for i = 1:length(target_dpi)
+    resized_image = imresize(input_image, scale_factors(i));
+    
+    % 生成输出文件名
+    output_filename = fullfile(input_dir, sprintf('%s_%ddpi%s', input_name, target_dpi(i), input_ext));
+    
+    % 保存调整后的图像
+    imwrite(resized_image, output_filename);
+end
