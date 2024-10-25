@@ -70,3 +70,126 @@ D=A(:,2)  ; % : 取全部
 [m,n]=find(A>20); %找出大于20的 序号值/矩阵（m行n列）
 [m,n]=find(A==1);
 
+%%
+% 程序结构
+%%
+% for
+sum=0;
+for n=1:1:5
+    sum=sum+n^2;
+
+end
+% while
+i=0;
+while i<=10
+    sum=sum+i;
+    i=i+1;
+end
+% if
+a=1;
+b=2;
+if a>b
+    'a>b';
+elseif a==b
+   'a=b';
+else a<b;
+    'a<b';
+
+end
+
+%%
+%二维平面的绘制
+%%
+x=0:0.01:2*pi ; %pi 圆周率Π
+y=sin(x);
+figure% 建立一个幕布
+plot(x,y)%绘制当前的二维平面图
+title('y=sin(x)')%添加一个标题
+xlabel('X')
+ylabel('sin(x)')
+xlim([0 2*pi])  %x的范围
+%%
+x=0:0.01:2*20 ;
+y1=200*exp(-0.05*x).*sin(x);
+y2=0.8*exp(-0.5*x).*sin(10*x);
+
+figure% 建立一个
+p = plot(1:10);
+set(p,'Color','b')
+[AX,H1,H2] = plotyy(x,y1,x,y2);%plotyy  公用一个坐标系
+set(get(AX(1),'Ylabel'),'String','Slow Dency')
+set(get(AX(2),'Ylabel'),'String','Fast Dency')
+title('Multiple Decay Rates')
+xlabel('Time(\musec)')
+set(H1, 'LineStyle','--')
+set(H2, 'LineStyle',':')
+%% yyaixs
+% 创建一些示例数据
+x = 1:10;
+y1 = sin(x);
+y2 = cos(x);
+
+% 使用 plotyy 绘制双 y 轴图形
+figure;
+[ax, h1, h2] = plotyy(x, y1, x, y2);
+
+% 修改第一个 y 轴的标签
+ylabel(ax(1), 'Sin Values');
+
+% 修改第二个 y 轴的标签
+ylabel(ax(2), 'Cos Values');
+
+% 使用 yyaxis 绘制相同的图形
+figure;
+yyaxis left;
+plot(x, y1);
+ylabel('Sin Values');
+
+yyaxis right;
+plot(x, y2);
+ylabel('Cos Values');
+%%
+
+
+ t = 0:pi/50:2*pi ;
+ x = 16*sin(t).^3 ;
+ y = 13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t) ;
+ scatter(x,y,'rd','filled')
+
+%%
+%三维立体绘图
+%%
+t = 0:pi/50:10*pi;
+plot3(sin(t),cos(t),t);
+xlabel('x:sin(t)');
+ylabel('y:cos(t)');
+zlabel('z:t');
+%hold on %保留当前的绘图 <——>hold off
+grid on %显示坐标区的网格线
+axis square %设置坐标轴范围和纵横比 把显示范围变成正方形
+
+
+
+[X,Y,Z] = peaks(25);
+CO(:,:,1) = zeros(25); % red
+CO(:,:,2) = ones(25).*linspace(0.5,0.6,25); % green
+CO(:,:,3) = ones(25).*linspace(0,1,25); % blue
+mesh(X,Y,Z,CO)
+
+%%
+%solve函数
+%%
+syms x
+eqn = 2*x + 1 == 0;
+x = solve(eqn, x)
+
+%%
+% 函数定义
+%%
+function result = add(a, b)
+    % 函数名: add
+    % 输入参数: a, b
+    % 输出结果: result
+    result = a + b;
+end
+
